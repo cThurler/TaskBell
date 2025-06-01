@@ -7,11 +7,21 @@ import (
 	"os"
 	"strings"
 	"time"
+	"fyne.io/fyne/v2/app"
 )
 
 const taskFile = "tasks.json"
 
 func main() {
+	a := app.New()
+	w := a.NewWindow("TaskBell")
+
+	setupUI(w)
+
+	w.ShowAndRun()
+}
+
+/* func main() {
 	tasks := loadTasks()
 	reader := bufio.NewReader(os.Stdin)
 
@@ -46,7 +56,7 @@ func main() {
 			fmt.Println("Opção inválida.")
 		}
 	}
-}
+} */
 
 func loadTasks() []Task {
 	data, err := os.ReadFile(taskFile)
